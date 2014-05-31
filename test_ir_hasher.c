@@ -1,7 +1,6 @@
 #include <stdio.h>
-
+#include <unistd.h>
 #include <pigpio.h>
-
 #include "ir_hasher.h"
 
 /*
@@ -33,15 +32,16 @@ int main(int argc, char *argv[])
 
    /* 
       This assumes the output pin of an IR receiver is
-      connected to gpio 7.
+      connected to gpio 18.
    */
 
-   hasher = Pi_Hasher(7, callback, 5);
+   hasher = Pi_Hasher(18, callback, 5);
 
    sleep(300);
 
    Pi_Hasher_cancel(hasher);
 
    gpioTerminate();
-}
 
+   return 0;
+}
